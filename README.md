@@ -1,16 +1,8 @@
-# React + Vite
+# Steps to Run the Project.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. After Cloning run the command 'npm i' to insatall all the dependencies.
+2. Once installed then run the command 'npm run dev' to start the project.
+3. There are two pages which are created one is 'Dashbaord' the main page and the other is 'Digital Transformation' which are the other two page.
+4. More Pages are also clickable but the screens are not attached so on clicking on it you will see the 404 page.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+5. The Apps are completely reponsive you can check it in the mobile as well.
