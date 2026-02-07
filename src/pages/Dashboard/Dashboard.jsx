@@ -1,9 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  FileText,
-  CheckCircle,
-  Clock,
-  ArrowUpRight,
   ChartNoAxesCombined,
   Folder,
   FolderCheck,
@@ -22,109 +18,66 @@ import {
 } from "recharts";
 import AppLayout from "../../components/layouts/AppLayout";
 import { ActivityItem, StatCard } from "../../components/common";
-import { PERFORMANCEDATA, PROJECT_TIMELINE } from "../../global/constant";
+import { PERFORMANCEDATA } from "../../global/constant";
 import ProgressStatusGrid from "./dashboardSections/ProgressStatusGrid";
 import { SemiCircleGauge } from "./dashboardSections/SemiCircleGauge";
 import PerspectiveLeaders from "./dashboardSections/PerspectiveLeaders";
 import { Separator } from "../../components/ui/separator";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import ProjectTimeline from "./dashboardSections/ProjectTimeline";
 
-export default function Dashboard() {
+function Dashboard() {
+  const statCardsData = [
+    {
+      label: "Overall Progress",
+      value: "78.65%",
+      icon: <ChartNoAxesCombined className="text-red-400" />,
+    },
+    {
+      label: "Total Criteria",
+      value: "95",
+      icon: <Folder className="text-red-400" />,
+    },
+    {
+      label: "Completed Criteria",
+      value: "52",
+      icon: <FolderCheck className="text-red-400" />,
+    },
+    {
+      label: "Evidence Documents",
+      value: "386",
+      icon: <FileLock className="text-red-400" />,
+    },
+    {
+      label: "Evidence (Completed)",
+      value: "302",
+      icon: <FileCheckCorner className="text-red-400" />,
+    },
+    {
+      label: "Uploaded to SGA",
+      value: "258",
+      icon: <FileInput className="text-red-400" />,
+    },
+  ];
+
   return (
     <AppLayout>
       <div className=" space-y-6  min-h-screen">
-        <Card className="border-none shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-bold">
-              Project Timeline
-            </CardTitle>
-            <Select>
-              <SelectTrigger className="w-25 cursor-pointer">
-                <SelectValue placeholder="2024" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem className="cursor-pointer" value="2024">
-                    2024
-                  </SelectItem>
-                  <SelectItem className="cursor-pointer" value="2025">
-                    2025
-                  </SelectItem>
-                  <SelectItem className="cursor-pointer" value="2026">
-                    2026
-                  </SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </CardHeader>
-          <CardContent>
-            <div className="relative flex justify-between items-center py-4">
-              <div className="absolute top-1/2 left-0 w-full h-3 rounded-full bg-gray-100 -translate-y-1/2" />
-              <div className="absolute top-1/2 rounded-full left-0 w-1/3 h-3 bg-green-600 -translate-y-1/2" />
-              {PROJECT_TIMELINE.map((step, i) => (
-                <div
-                  key={i}
-                  className="relative z-10 flex flex-col items-center"
-                >
-                  <div
-                    className={`w-2 h-2 mt-10 rounded-full ${i <= 1 ? "bg-white" : "bg-red-600"} `}
-                  />
-                  <article className="text-center">
-                    <span className="text-[10px]  font-medium text-gray-500">
-                      {step.date}
-                    </span>
-                    <h3 className="text-xs">{step.event}</h3>
-                  </article>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        <ProjectTimeline />
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <StatCard
-            label="Overall Progress"
-            value="78.65%"
-            icon={<ChartNoAxesCombined className="text-red-400" />}
-          />
-          <StatCard
-            label="Total Criteria"
-            value="95"
-            icon={<Folder className="text-red-400" />}
-          />
-          <StatCard
-            label="Completed Criteria"
-            value="52"
-            icon={<FolderCheck className="text-red-400" />}
-          />
-          <StatCard
-            label="Evidence Documents"
-            value="386"
-            icon={<FileLock className="text-red-400" />}
-          />
-          <StatCard
-            label="Evidence (Completed)"
-            value="302"
-            icon={<FileCheckCorner className="text-red-400" />}
-          />
-          <StatCard
-            label="Uploaded to SGA"
-            value="258"
-            icon={<FileInput className="text-red-400" />}
-          />
+          {statCardsData.map((card, index) => (
+            <StatCard
+              key={index}
+              label={card.label}
+              value={card.value}
+              icon={card.icon}
+            />
+          ))}
         </div>
 
         <ProgressStatusGrid />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Overall Compliance Gauge */}
           <Card className="p-6 border-none shadow-sm">
             <h3 className="text-sm font-bold text-slate-800 border-b pb-2 mb-4">
               Overall Compliance Score
@@ -137,8 +90,6 @@ export default function Dashboard() {
           </Card>
 
           <PerspectiveLeaders />
-
-          {/* Audit Readiness Gauge */}
 
           <Card className="border-none shadow-sm">
             <CardHeader>
@@ -173,6 +124,21 @@ export default function Dashboard() {
             <CardContent className="h-75">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={PERFORMANCEDATA}>
+                  <defs>
+                    <linearGradient
+                      id="blueWhiteGradient"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop offset="0%" stopColor="#0078D7" />
+                      <stop offset="30%" stopColor="#2563eb" />
+                      <stop offset="70%" stopColor="#60a5fa" />
+                      <stop offset="100%" stopColor="#dbeafe" />
+                    </linearGradient>
+                  </defs>
+
                   <CartesianGrid
                     strokeDasharray="3 3"
                     vertical={false}
@@ -188,9 +154,9 @@ export default function Dashboard() {
                   <Tooltip cursor={{ fill: "#f8fafc" }} />
                   <Bar
                     dataKey="value"
-                    fill="#3b82f6"
-                    radius={[4, 4, 0, 0]}
-                    barSize={30}
+                    fill="url(#blueWhiteGradient)"
+                    barSize={45} // Even wider bars
+                    radius={[6, 6, 0, 0]}
                   />
                 </BarChart>
               </ResponsiveContainer>
@@ -223,3 +189,5 @@ export default function Dashboard() {
     </AppLayout>
   );
 }
+
+export default Dashboard;

@@ -4,24 +4,24 @@ export const PROJECT_TIMELINE = [
     event: "Kickoff Workshop",
   },
   {
-    date: "Mar 17",
-    event: "Kickoff Workshop",
+    date: "March 18",
+    event: "Data Collection",
   },
   {
-    date: "Mar 17",
-    event: "Kickoff Workshop",
+    date: "May 8",
+    event: "Initial Phase",
   },
   {
-    date: "Mar 17",
-    event: "Kickoff Workshop",
+    date: "May 9–July 12",
+    event: "Verification",
   },
   {
-    date: "Mar 17",
-    event: "Kickoff Workshop",
+    date: "July 13",
+    event: "Completion Reviews",
   },
   {
-    date: "Mar 17",
-    event: "Kickoff Workshop",
+    date: "August 21",
+    event: "Cycle Conclusion",
   },
 ];
 
