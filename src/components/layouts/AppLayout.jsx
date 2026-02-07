@@ -15,7 +15,7 @@ function AppLayout({ children }) {
       />
       <main className={`border ${collapsed ? "lg:ml-16" : "lg:ml-64"} w-full`}>
         <Header setSidebarOpen={setMobileOpen} />
-        <article className="p-6 px-10">{children}</article>
+        <article className="p-10">{children}</article>
       </main>
     </section>
   );

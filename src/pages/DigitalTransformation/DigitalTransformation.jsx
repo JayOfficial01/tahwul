@@ -212,7 +212,7 @@ function DigitalTransformation() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6  min-h-screen space-y-6">
+      <div className="min-h-screen space-y-6">
         <div className="flex items-center gap-2 text-[#1e293b] mb-4 cursor-pointer hover:opacity-70 transition-opacity">
           <ArrowLeft size={14} strokeWidth={3} />
           <span className="text-[11px] font-bold uppercase tracking-tight">
